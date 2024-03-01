@@ -1,6 +1,5 @@
 ﻿namespace CalculoCombustivel
 {
-
     /// <summary>
     /// Classe responsável pela inicialização do sistema
     /// </summary>
@@ -45,9 +44,8 @@
                         Console.WriteLine("1 - GASOLINA");
                         Console.WriteLine("2 - ETANOL");
                         Console.WriteLine("3 - FLEX");
-                        Console.WriteLine("4 - Não Informar!");
-                                  var tipo = Console.ReadLine();
-                        if (tipo == "1" || tipo == "2" || tipo == "3" || tipo == "4")
+                        var tipo = Console.ReadLine();
+                        if (tipo == "1" || tipo == "2" || tipo == "3")
                         {
                             carro.Tipo = Enum.Parse<TipoCombustivel>(tipo);
                             break;
@@ -113,9 +111,8 @@
                         Console.WriteLine("1 - GASOLINA");
                         Console.WriteLine("2 - ETANOL");
                         Console.WriteLine("3 - FLEX");
-                        Console.WriteLine("4 - Não Informar!");
                         var tipo = Console.ReadLine();
-                        if (tipo == "1" || tipo == "2" || tipo == "3" || tipo == "4")
+                        if (tipo == "1" || tipo == "2" || tipo == "3")
                         {
                             carro.Tipo = Enum.Parse<TipoCombustivel>(tipo);
                             break;
@@ -169,13 +166,13 @@
                 {
                     Console.Write("Deseja realmente sair? 4 (sim) 5 (Não)");
                     int sair = int.Parse(Console.ReadLine()!);
-                    if (sair == 1)
+                    if (sair == 4)
                     {
                         Environment.Exit(0);
                     }
                     else
                     {
-                        escolha = 5;
+                        escolha = 4;
                         continue;
                     }
                 }
