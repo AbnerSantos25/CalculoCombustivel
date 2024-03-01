@@ -50,7 +50,6 @@
                         if (tipo == "1" || tipo == "2" || tipo == "3" || tipo == "4")
                         {
                             carro.Tipo = Enum.Parse<TipoCombustivel>(tipo);
-                            Console.WriteLine(carro.Tipo);
                             break;
                         }
                         else
@@ -61,13 +60,51 @@
                         }
                     }                
                     while (true);
-                    
 
+                    //calcular o valor do combustivel
+                    do
+                    {
+
+                        if (carro.Tipo == TipoCombustivel.Flex)
+                        {
+                            Console.WriteLine("Informe o valor da Gasolina: ");
+                            Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
+
+
+                            Console.WriteLine("Informe o valor do Etanol: ");
+                            Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
+
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+
+                        }
+                        else if (carro.Tipo == TipoCombustivel.Etanol)
+                        {
+                            Console.WriteLine("Informe o valor da Etanol: ");
+                            Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Informe o valor da Gasolina: ");
+                            Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                        }
+
+                        
+                        Task.Delay(8000).Wait();
+                        escolha = 4; //go back to the main menu
+                        break;
+
+                    }
+                    while (true);
+
+                    //fim do calcular valor do combustivel
 
                 }
                 else if (escolha == 2)
                 {
-                     do 
+                    // seleciona o tipo do combustivel //
+                    do
                     {
                         Console.Clear();
                         Console.WriteLine("Infome os dados do carro: ");
@@ -80,7 +117,6 @@
                         if (tipo == "1" || tipo == "2" || tipo == "3" || tipo == "4")
                         {
                             carro.Tipo = Enum.Parse<TipoCombustivel>(tipo);
-                            Console.WriteLine(carro.Tipo);
                             break;
                         }
                         else
@@ -92,44 +128,40 @@
                     }                
                     while (true);
 
+                    // Fim do eleciona o tipo do combustivel //
+
+
+                    // Imput  do consumo do carro por litro && Calcular o mais vantajoso //
                     do
                     {
-                        // Console.Clear();
-                        double ValorEtanol = 0;
-                        double valorGasolina = 0;
-
-                        Combustivel.TipoCombustivel = carro.Tipo;
 
                         if(carro.Tipo == TipoCombustivel.Flex)
                         {
-                            Console.WriteLine("Informe o valor do Etanol: ");
-                            ValorEtanol = double.Parse(Console.ReadLine()!);
-                            
+                            Console.WriteLine("Informe o consumo em Gasolina: ");
+                            carro.ConsumoGasolina = double.Parse(Console.ReadLine()!);
 
-                            Console.WriteLine("Informe o valor da Gasolina: ");
-                            valorGasolina = double.Parse(Console.ReadLine()!);
-                            if(ValorEtanol / carro.ConsumoEtanol < valorGasolina / carro.ConsumoGasolina)
-                            {
-                                Console.WriteLine("Abasteça com Etanol");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Abasteça com Gasolina");
-                            }
+
+                            Console.WriteLine("Informe o consumo em Etanol: ");
+                            carro.ConsumoEtanol = double.Parse(Console.ReadLine()!);
+                         
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                            
                             
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
                             Console.WriteLine("Informe o valor do Etanol: ");
-                            Combustivel.Valor = decimal.Parse(Console.ReadLine()!);
+                            Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
                         }
                         else
                         {
                             Console.WriteLine("Informe o valor da Gasolina: ");
-                            Combustivel.Valor = decimal.Parse(Console.ReadLine()!);
+                            Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
+                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
                         }
-                        
-                        Combustivel.imprime();
+                             
+                        Task.Delay(4000).Wait();
                         escolha = 4; //go back to the main menu
                         break;
                            

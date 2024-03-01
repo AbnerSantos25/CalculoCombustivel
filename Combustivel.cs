@@ -4,18 +4,25 @@
     {
         public int Id { get; set; }
         public TipoCombustivel TipoCombustivel { get; set; }
-        public decimal Valor { get; set; }
-
-        public void Gasolina(int valorGasolina)
-        {
-            TipoCombustivel = TipoCombustivel.Gasolina;
-            Valor = valorGasolina;
-        }
+        public double ValorGasolina { get; set; }
+        public double ValorEtanol { get; set; }
 
         public void imprime()
         {
-            Console.WriteLine("Tipo: " + TipoCombustivel);
-            Console.WriteLine("Valor: " + Valor);
+            if(TipoCombustivel == TipoCombustivel.Flex)
+            {
+                Console.WriteLine($"Valor da gasolina: {ValorGasolina}, Valor do Etanol: {ValorEtanol}");
+            }
+            else if(TipoCombustivel == TipoCombustivel.Etanol)
+            {
+                Console.WriteLine($"Valor da Etanol: " + ValorEtanol);
+            }
+            else {
+                Console.WriteLine($"Valor da gasolina: " + ValorGasolina);
+            }
+
+        
         }
+
     }
 }
