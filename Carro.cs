@@ -35,7 +35,7 @@ namespace CalculoCombustivel
                     }
                     else if(res < ConsumoGasolina)
                     {
-                       Console.WriteLine("Abasteça com Etanol");
+                       Console.WriteLine("Abasteça Com Etanol");
                     }
 
                 }
