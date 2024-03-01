@@ -15,34 +15,37 @@ namespace CalculoCombustivel
             Console.WriteLine("A: " + ConsumoEtanol);
         }
 
-        public void Calcular(double ValorG, double ValorE)
+        public void Calcular(Combustivel Combustivel)
         {
+
             if (Tipo == TipoCombustivel.Etanol)
             {
                 Console.WriteLine("Abasteça com Etanol");
-            } else if (Tipo == TipoCombustivel.Gasolina)
+            }
+            else if (Tipo == TipoCombustivel.Gasolina)
             {
                 Console.WriteLine("Abasteça com Gasolina");
-            } else if (Tipo == TipoCombustivel.Flex)
+            }
+            else if (Tipo == TipoCombustivel.Flex)
             {
                 if (ConsumoGasolina == 0 || ConsumoEtanol == 0)
                 {
                     Porcentagem = 0.7;
-                    double res = ValorE / ValorG;
-                    if(res > Porcentagem) 
+                    double res = Combustivel.ValorEtanol / Combustivel.ValorGasolina;
+                    if (res > Porcentagem)
                     {
                         Console.WriteLine("Abasteça com Gasolina");
                     }
-                    else if(res < ConsumoGasolina)
+                    else if (res < Porcentagem)
                     {
-                       Console.WriteLine("Abasteça Com Etanol");
+                        Console.WriteLine("Abasteça Com Etanol");
                     }
 
                 }
                 else
                 {
                     Porcentagem = ConsumoEtanol / ConsumoGasolina;
-                    double res = ValorE / ValorG;
+                    double res = Combustivel.ValorEtanol / Combustivel.ValorGasolina;
                     if (res > Porcentagem)
                     {
                         Console.WriteLine("Abasteça com Gasolina");

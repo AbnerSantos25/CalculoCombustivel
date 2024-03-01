@@ -12,11 +12,11 @@
         static void Main()
         {
             int escolha = 1;
+            var carro = new Carro();
+            var Combustivel = new Combustivel();
 
             do
             {
-                var carro = new Carro();
-                var Combustivel = new Combustivel();
 
                 if (escolha != 5)
                     if (escolha < 1 || escolha > 3)
@@ -73,25 +73,26 @@
 
                             Console.WriteLine("Informe o valor do Etanol: ");
                             Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
-
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                            Console.Clear();
+                            carro.Calcular(Combustivel);
 
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
                             Console.WriteLine("Informe o valor da Etanol: ");
                             Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                            Console.Clear();
+                            carro.Calcular(Combustivel);
                         }
                         else
                         {
                             Console.WriteLine("Informe o valor da Gasolina: ");
                             Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
+                            Console.Clear();
+                            carro.Calcular(Combustivel);
                         }
-
-                        
-                        Task.Delay(8000).Wait();
+                        Console.WriteLine("Você sera redirecionado para o menu principal em 5 segundos");
+                        Task.Delay(5000).Wait();
                         escolha = 4; //go back to the main menu
                         break;
 
@@ -143,25 +144,20 @@
 
                             Console.WriteLine("Informe o consumo em Etanol: ");
                             carro.ConsumoEtanol = double.Parse(Console.ReadLine()!);
-                         
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
-                            
-                            
+
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
-                            Console.WriteLine("Informe o valor do Etanol: ");
+                            Console.WriteLine("Informe o consumo em Etanol: ");
                             Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
                         }
                         else
                         {
-                            Console.WriteLine("Informe o valor da Gasolina: ");
+                            Console.WriteLine("Informe o consumo em Gasolina: ");
                             Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
-                            carro.Calcular(Combustivel.ValorGasolina, Combustivel.ValorEtanol);
                         }
                              
-                        Task.Delay(4000).Wait();
+                        Task.Delay(1000).Wait();
                         escolha = 4; //go back to the main menu
                         break;
                            
@@ -185,10 +181,6 @@
                 }
 
             } while (escolha < 1 || escolha > 3);
-
-            var carro1 = new Carro();
-            
-
 
         }
     }
