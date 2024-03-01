@@ -29,7 +29,7 @@
                 Console.WriteLine("Digite 1 para >>> Calcular Combustivel");
                 Console.WriteLine("Digite 2 para >>> Editar Dados");
                 Console.WriteLine("Digite 3 para >>> Sair do Programa");
-
+                
                 var result = Console.ReadLine()!;
 
                 if (!int.TryParse(result, out escolha))
@@ -46,7 +46,7 @@
                         Console.WriteLine("2 - ETANOL");
                         Console.WriteLine("3 - FLEX");
                         Console.WriteLine("4 - Não Informar!");
-                        var tipo = Console.ReadLine();
+                                  var tipo = Console.ReadLine();
                         if (tipo == "1" || tipo == "2" || tipo == "3" || tipo == "4")
                         {
                             carro.Tipo = Enum.Parse<TipoCombustivel>(tipo);
