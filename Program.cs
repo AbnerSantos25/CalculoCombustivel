@@ -18,7 +18,7 @@
             {
 
                 if (escolha != 5)
-                    if (escolha < 1 || escolha > 3)
+                    if (escolha < 1 || escolha > 4)
                     {
                         Console.Clear();
                         Console.WriteLine($"O valor digitado não corresonde com as opções disponiveis no menu, tente novamente.");
@@ -32,7 +32,16 @@
                 var result = Console.ReadLine()!;
 
                 if (!int.TryParse(result, out escolha))
+                {
                     continue;
+                }
+
+                if (escolha < 1 || escolha > 3)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"O valor digitado não corresonde com as opções disponiveis no menu, tente novamente.");
+                    continue;
+                }
 
                 if (escolha == 1)
                 {
@@ -77,17 +86,13 @@
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
-                            Console.WriteLine("Informe o valor da Etanol: ");
-                            Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
                             Console.Clear();
-                            carro.Calcular(Combustivel);
+                            Console.WriteLine("Abasteça com Etanol");
                         }
                         else
                         {
-                            Console.WriteLine("Informe o valor da Gasolina: ");
-                            Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
                             Console.Clear();
-                            carro.Calcular(Combustivel);
+                            Console.WriteLine("Abasteça com Gasolina");
                         }
                         Console.WriteLine("Você sera redirecionado para o menu principal em 5 segundos");
                         Task.Delay(5000).Wait();
@@ -135,6 +140,7 @@
 
                         if(carro.Tipo == TipoCombustivel.Flex)
                         {
+                            Console.Clear();
                             Console.WriteLine("Informe o consumo em Gasolina: ");
                             carro.ConsumoGasolina = double.Parse(Console.ReadLine()!);
 
@@ -145,11 +151,13 @@
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
+                            Console.Clear();
                             Console.WriteLine("Informe o consumo em Etanol: ");
                             Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
                         }
                         else
                         {
+                            Console.Clear();
                             Console.WriteLine("Informe o consumo em Gasolina: ");
                             Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
                         }

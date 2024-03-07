@@ -2,6 +2,9 @@
 
 namespace CalculoCombustivel
 {
+    /// <summary>
+    /// Classe responsável por calcular o combustivel
+    /// </summary>
     public class Carro
     {
         public int Id { get; set; } 
@@ -9,12 +12,11 @@ namespace CalculoCombustivel
         public double ConsumoEtanol { get; set; }
         public double ConsumoGasolina { get; set; }
         public double Porcentagem { get; set; }
-        public void imprime()
-        {
-            Console.WriteLine("G: " + ConsumoGasolina);
-            Console.WriteLine("A: " + ConsumoEtanol);
-        }
 
+        /// <summary>
+        /// Metodo responsável por calcular o combustivel e retornar o tipo de combustivel que deve ser abastecido
+        /// </summary>
+        /// <param name="Combustivel"></param>
         public void Calcular(Combustivel Combustivel)
         {
 
