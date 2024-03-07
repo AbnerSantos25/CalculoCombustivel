@@ -16,6 +16,9 @@ namespace CalculoCombustivel
                 return false;
             }
 
+            if (retorno < 0)
+                return false;
+
             return true;
         }
 
@@ -26,6 +29,9 @@ namespace CalculoCombustivel
                 ExibirErro();
                 return false;
             }
+
+            if (retorno < 0)
+                return false;
 
             return true;
         }
