@@ -30,7 +30,7 @@ namespace CalculoCombustivel
             }
             else if (Tipo == TipoCombustivel.Flex)
             {
-                if (ConsumoGasolina == 0 || ConsumoEtanol == 0)
+                if (ConsumoGasolina == 0 && ConsumoEtanol == 0)
                 {
                     Porcentagem = 0.7;
                     double res = Combustivel.ValorEtanol / Combustivel.ValorGasolina;

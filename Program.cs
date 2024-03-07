@@ -8,6 +8,7 @@
         /// <summary>
         /// Ponto de entrada do sistema
         /// </summary>      \
+    
         static void Main()
         {
             int escolha = 1;
@@ -18,12 +19,6 @@
             do
             {
 
-                if (escolha != 5)
-                    //if (escolha < 1 || escolha > 4)
-                    //{
-                    //    //Console.Clear();
-                    //    Console.WriteLine($"O valor digitado não corresonde com as opções disponiveis no menu, tente novamente.");
-                    //}
                 Console.Clear();
                 Console.WriteLine("Informe uma opão: ");
                 Console.WriteLine("Digite 1 para >>> Calcular Consumo");
@@ -32,27 +27,17 @@
                 
                 var result = Console.ReadLine()!;
 
-                if (!int.TryParse(result, out escolha))
+                if (!Funcoes.ValidaEntradaInt(result, out escolha))
                 {
-                    Console.WriteLine("Opção não é Valida!");
-                    Task.Delay(1500).Wait();
                     continue;
                 }
                 else
                 {
                     if(escolha < 1 || escolha > 3)
                     {
-                        Console.WriteLine("Opção não é Valida!");
-                        Task.Delay(1500).Wait();
+                        Funcoes.ExibirErro();
                         continue;
                     }   
-                }
-
-                if (escolha < 1 || escolha > 3)
-                {
-                    Console.Clear();
-                    Console.WriteLine($"O valor digitado não corresonde com as opções disponiveis no menu, tente novamente.");
-                    continue;
                 }
 
                 if (escolha == 1)
@@ -73,8 +58,7 @@
                         }
                         else
                         {
-                            Console.WriteLine("Opção não é Valida!");
-                            Task.Delay(1500).Wait();
+                            Funcoes.ExibirErro();
                             continue;
                         }
                     }                
@@ -88,45 +72,48 @@
                         {
                             Console.Clear();
                             Console.WriteLine("Informe o valor da Gasolina: ");
-                            //Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
-                            if(!double.TryParse(Console.ReadLine(), out double recebe))
+
+                            if(!Funcoes.ValidaEntradaDouble(Console.ReadLine()!, out double recebe))
                             {
-                                Console.WriteLine("Opção não é Valida!");
-                                Task.Delay(1500).Wait();
                                 Console.Clear();
                                 continue;
                             }
                             else
                             {
+                                Console.Clear();
                                 Combustivel.ValorGasolina = recebe;
                             }
 
-                            Console.WriteLine("Informe o valor do Etanol: ");
-                            //Combustivel.ValorEtanol = double.Parse(Console.ReadLine()!);
-                            if(!double.TryParse(Console.ReadLine(), out recebe))
+                            do
                             {
-                                Console.WriteLine("Opção não é Valida!");
-                                Task.Delay(1500).Wait();
+                                Console.WriteLine("Informe o valor do Etanol: ");
+
+                                if (!Funcoes.ValidaEntradaDouble(Console.ReadLine()!, out recebe))
+                                {
+                                    Console.Clear();
+                                    continue;
+                                }
+                                else
+                                {
+                                    Combustivel.ValorEtanol = recebe;
+                                }
                                 Console.Clear();
-                                continue;
-                            }
-                            else
-                            {
-                                Combustivel.ValorEtanol = recebe;
-                            }
-                            Console.Clear();
-                            carro.Calcular(Combustivel);
+                                carro.Calcular(Combustivel);
+                                break;
+
+                            } while (true);
+                                
 
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
                         {
                             Console.Clear();
-                            Console.WriteLine("Abasteça com Etanol");
+                            carro.Calcular(Combustivel);
                         }
                         else
                         {
                             Console.Clear();
-                            Console.WriteLine("Abasteça com Gasolina");
+                            carro.Calcular(Combustivel);
                         }
                         Console.WriteLine("Você sera redirecionado para o menu principal em 5 segundos");
                         Task.Delay(5000).Wait();
@@ -158,8 +145,7 @@
                         }
                         else
                         {
-                            Console.WriteLine("Opção não é Valida!");
-                            Task.Delay(1500).Wait();
+                            Funcoes.ExibirErro();
                             continue;
                         }
                     }                
@@ -172,35 +158,34 @@
                     do
                     {
 
-                        if(carro.Tipo == TipoCombustivel.Flex)
+                        if (carro.Tipo == TipoCombustivel.Flex)
                         {
                             Console.Clear();
                             Console.WriteLine("Informe o consumo em Gasolina: ");
-                            if(!double.TryParse(Console.ReadLine(), out double recebe))
+                            if (!Funcoes.ValidaEntradaDouble(Console.ReadLine()!, out double recebe))
                             {
-                                Console.WriteLine("Opção não é Valida!");
-                                Task.Delay(1500).Wait();
                                 continue;
                             }
                             else
                             {
                                 carro.ConsumoGasolina = recebe;
-                            }   
-                            //(!int.TryParse(result, out escolha))
-
-
-                            Console.WriteLine("Informe o consumo em Etanol: ");
-                            //carro.ConsumoEtanol = double.Parse(Console.ReadLine()!);
-                            if(!double.TryParse(Console.ReadLine(), out recebe))
-                            {
-                                Console.WriteLine("Opção não é Valida!");
-                                Task.Delay(1500).Wait();
-                                continue;
                             }
-                            else
+
+                            do
                             {
-                                carro.ConsumoEtanol = recebe;
-                            }
+                                Console.Clear();
+                                Console.WriteLine("Informe o consumo em Etanol: ");
+
+                                if (!Funcoes.ValidaEntradaDouble(Console.ReadLine()!, out recebe))
+                                {
+                                    continue;
+                                }
+                                else
+                                {
+                                    carro.ConsumoEtanol = recebe;
+                                    break;
+                                }
+                            }while (true);
 
                         }
                         else if (carro.Tipo == TipoCombustivel.Etanol)
@@ -231,16 +216,13 @@
                         Console.Clear();
                         Console.WriteLine("Deseja realmente sair? 4 (sim) 5 (Não)");
                         var _sair = Console.ReadLine();
-                        if(!int.TryParse(_sair, out int sair))
+                        if(!Funcoes.ValidaEntradaInt(_sair!, out int sair))
                         {
-                            Console.WriteLine("Opção não é Valida!");
-                            Task.Delay(1500).Wait();
                             continue;
                         }
                         if (sair != 4 && sair != 5)
                         {
-                            Console.WriteLine("Opção não é Valida!");
-                            Task.Delay(1500).Wait();
+                            Funcoes.ExibirErro();
                             continue;
                         }
                         else
@@ -260,6 +242,10 @@
 
             } while (escolha < 1 || escolha > 3);
 
-        }
+
+
+
+
+        }       
     }
 }
