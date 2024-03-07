@@ -85,12 +85,14 @@
 
                         if (carro.Tipo == TipoCombustivel.Flex)
                         {
+                            Console.Clear();
                             Console.WriteLine("Informe o valor da Gasolina: ");
                             //Combustivel.ValorGasolina = double.Parse(Console.ReadLine()!);
                             if(!double.TryParse(Console.ReadLine(), out double recebe))
                             {
                                 Console.WriteLine("Opção não é Valida!");
                                 Task.Delay(1500).Wait();
+                                Console.Clear();
                                 continue;
                             }
                             else
@@ -104,6 +106,7 @@
                             {
                                 Console.WriteLine("Opção não é Valida!");
                                 Task.Delay(1500).Wait();
+                                Console.Clear();
                                 continue;
                             }
                             else
