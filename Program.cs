@@ -12,6 +12,7 @@
         {
             int escolha = 1;
             var carro = new Carro();
+            carro.Id = 1;
             var Combustivel = new Combustivel();
 
             do
@@ -25,9 +26,9 @@
                     //}
                 Console.Clear();
                 Console.WriteLine("Informe uma opão: ");
-                Console.WriteLine("Digite 1 para >>> Calcular Combustivel");
-                Console.WriteLine("Digite 2 para >>> Editar Dados");
-                Console.WriteLine("Digite 3 para >>> Sair do Programa");
+                Console.WriteLine("Digite 1 para >>> Calcular Consumo");
+                Console.WriteLine("Digite 2 para >>> Editar Dados do Carro");
+                Console.WriteLine("Digite 3 para >>> Encerrar Sistema");
                 
                 var result = Console.ReadLine()!;
 
