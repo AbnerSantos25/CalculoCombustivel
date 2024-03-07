@@ -11,7 +11,6 @@ namespace CalculoCombustivel
         public TipoCombustivel Tipo { get; set; }
         public double ConsumoEtanol { get; set; }
         public double ConsumoGasolina { get; set; }
-        public double Porcentagem { get; set; }
 
         /// <summary>
         /// Metodo responsável por calcular o combustivel e retornar o tipo de combustivel que deve ser abastecido
@@ -19,6 +18,7 @@ namespace CalculoCombustivel
         /// <param name="Combustivel"></param>
         public void Calcular(Combustivel Combustivel)
         {
+            double Porcentagem;
 
             if (Tipo == TipoCombustivel.Etanol)
             {
